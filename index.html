@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -11,16 +11,25 @@
     <h1> 
         Sube tu imagen
     </h1>
-    <button id="submit">
-        Subir    
-    </button>
 
     <h2 id="msg">
     </h2>
 
-    <div id="container">
+    <input type="file" name="archivos" id="archivos" hidden>
+    <label for="archivos" class="btn">📂 Subir archivo</label>
+    <h3>Mueve tu imagen</h3>
+    <div>
+
+        <section id="container">
+            <img src="src/Geralt.png" id="imagen" class="imagen">
+
+        </section>
+        <section id="container_2"> 
+
+        </section>
+        
     </div>
-    
+
     <script src='scripts.js'></script>
 </body>
 </html>
