@@ -1,0 +1,9 @@
+button{
+    width: 150px;
+    height: 45px;
+    border-radius: 20px;
+    background-color: aqua;
+}
+body{
+    text-align: center;
+}
