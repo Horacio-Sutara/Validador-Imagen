@@ -34,6 +34,11 @@ body{
 #imagen{
     width: 300px;
 }
+
+#msg{
+    white-space: pre-line;/* salto de linea   */
+    height: 50px;
+}
 div{
     display: flex;
     margin-left: 10px;
