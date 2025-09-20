@@ -24,7 +24,7 @@ export default function App() {
     
     function cargar(e){
         let resultado= e.target.result;
-        setContenido(resultado);
+        setContenido1(resultado);
         //img"Vista previa";
     }
 
