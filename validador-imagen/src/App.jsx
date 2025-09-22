@@ -81,34 +81,34 @@ export default function App() {
 
   return (
     <>
-        <h1>Sube tu imagen</h1>
-        <h2 id="msg">{mensaje}</h2>
+        <div className="subir_imagen">
+            <h1>Sube tu imagen</h1>
+            <h2 id="msg">{mensaje}</h2>
+            
+            <input
+                type="file"
+                name="archivo"
+                id="archivo"
+                hidden
+                onChange={procesar}
+            />
+            <label htmlFor="archivo" className="btn">
+                📂 Selecciona tu imagen
+            </label>
+            
+            <div
+                className="upload-area"
+                onDragOver={desactivar_drag}
+                onDrop={mover_elemento}
+            >
+                <p>O arrastra la imagen aquí</p>
+            </div>
 
-        {/* Área de subida */}
-
-        <input
-            type="file"
-            name="archivo"
-            id="archivo"
-            hidden
-            onChange={procesar}
-        />
-        <label htmlFor="archivo" className="btn">
-            📂 Selecciona tu imagen
-        </label>
-
-        <div
-            className="upload-area"
-            onDragOver={desactivar_drag}
-            onDrop={mover_elemento}
-        >
-            <p>O arrastra la imagen aquí</p>
+            <div className="preview-area">
+                <img src={contenido} alt="Vista previa" className="imagen" />
+            </div>
         </div>
 
-        {/* Área de visualización */}
-        <div className="preview-area">
-            <img src={contenido} alt="Vista previa" className="imagen" />
-        </div>
-        </>
+    </>
   );
 }

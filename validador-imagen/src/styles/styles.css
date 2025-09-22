@@ -1,34 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    background: none;
+    color: inherit;
+}
+
 body{
     text-align: center;
-    display: flex;
-    justify-content: center;
     background-color: gray;
 }
-.upload-area {
-  border: 2px dashed white;
-  padding: 30px;
-  width: auto;
-  text-align: center;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
 
-.upload-area p {
-  margin-top: 10px;
-  color: black;
-}
-
-.preview-area {
-  width: auto;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.preview-area .imagen {
-  max-width: 100%;
-  max-height: 100%;
+.subir_imagen{
+    justify-items: center;
 }
 
 #msg{
@@ -40,6 +27,7 @@ body{
 .btn {
     display: inline-block;
     padding: 10px 10px;
+    max-height: 35px;
     background-color: #007BFF;
     color: white;
     font-size: 16px;
@@ -52,3 +40,33 @@ body{
 .btn:hover {
     background-color: #0056b3;
 }
+
+.upload-area {
+
+    border: 2px dashed white;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: 430px;
+}
+
+.upload-area p {
+    margin-top: 10px;
+    color: black;
+}
+
+.preview-area {
+    width: auto;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+.preview-area .imagen {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
