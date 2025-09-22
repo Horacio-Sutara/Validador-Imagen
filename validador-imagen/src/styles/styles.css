@@ -14,10 +14,6 @@ body{
     background-color: gray;
 }
 
-.subir_imagen{
-    justify-items: center;
-}
-
 #msg{
     height: 50px;
     white-space: pre-line; /* saltos de línea */

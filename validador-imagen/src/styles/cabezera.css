@@ -1,19 +1,27 @@
 .toolbar{
     background-color: black;
+    opacity: 0.7;
     height: 50px;
     width: 100%;
-    color: white;
-    text-align: center;
-    align-items: center;
     display: flex;
 }
 .secciones{
     display: flex;
-    gap: 20px;
+    gap: 6%;
     width: 100%;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     font-weight: bold;
+}
+
+.secciones a{
     cursor: pointer;
+    color:aqua;
+    text-decoration: none;
+    font-size: 30px;
+}
+.subir_imagen{
+    visibility: visible;
+    justify-items: center;
 }
