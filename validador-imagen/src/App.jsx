@@ -1,93 +1,114 @@
-import "./styles/styles.css"
-import default_img from "./assets/Geralt.png"
-import { useState } from "react";
+import "./styles/styles.css";
+import default_img from "./assets/Geralt.png";
+import { useEffect, useState } from "react";
+
 export default function App() {
-    const [contenido1, setContenido1] = useState(default_img);
-    const [contenido2, setContenido2] = useState(null); // segundo contenedor vacío
-    const [mensaje,setMensaje]=useState("chao ");
+  const [contenido, setContenido] = useState(default_img);
+  const [mensaje, setMensaje] = useState("");
 
-    function procesar(e){
-        var mi_archivo = e.target.files[0];
-        if (!mi_archivo){//verifica si el archivo no esta vacio
-            setMensaje("");
-            return;
-        }
-        if (!mi_archivo.type.startsWith("image/")){//verifica que el archivo no sea una imagen
-            setMensaje("¡Debe ser una imagen!");
-        }
-        else{
-            setMensaje("Nombre de imagen: "+mi_archivo.name+"\nTamaño: "+mi_archivo.size +" bytes");
-            const lector = new FileReader();
-            lector.readAsDataURL(mi_archivo);
-            lector.onload= cargar;}
-    }
-    
-    function cargar(e){
-        let resultado= e.target.result;
-        setContenido1(resultado);
-        //img"Vista previa";
+  // Manejo del archivo seleccionado
+  function procesar(e) {
+    const mi_archivo = e.target.files[0];
+    if (!mi_archivo) {
+      setMensaje("");
+      return;
     }
 
-    function desactivar_drag(e){
-         e.preventDefault();
-         setMensaje("");
+    if (!mi_archivo.type.startsWith("image/")) {
+      setMensaje("¡Debe ser una imagen!");
+      return;
     }
 
-    function mover_elemento(e) {
-        e.preventDefault();
-        const file = e.dataTransfer.files[0];
-        if (!file) return;
-        if (!file.type.startsWith("image/")) {
-        setMensaje("Debe ser una imagen");
-        return;
-        }
+    setMensaje(
+      `Nombre de imagen: ${mi_archivo.name}\nTamaño: ${mi_archivo.size} bytes`
+    );
 
-        setMensaje(
-        `Imagen cargada: ${file.name}\nTamaño: ${file.size} bytes`
-        );
+    const lector = new FileReader();
+    lector.readAsDataURL(mi_archivo);
 
-        const reader = new FileReader();
-        const contenedorDestino = e.currentTarget.id; // detectamos en qué contenedor se soltó
+    lector.onload = cargarImagen;
+  }
 
-        reader.onload = (ev) => {
-        const resultado = ev.target.result;
+  function cargarImagen(ev) {
+    const resultado = ev.target.result;
+    window.history.pushState({ img: resultado }, "", "imagen.html");
+    setContenido(resultado);
+  }
 
-        if (contenedorDestino === "container") {
-            setContenido1(resultado);
-            setContenido2("");
-        }
-        else if (contenedorDestino === "container_2") {
-            setContenido2(resultado);
-            setContenido1("");
-        }
-        };
+  // Evitar comportamiento por defecto al arrastrar
+  function desactivar_drag(e) {
+    e.preventDefault();
+    setMensaje("");
+  }
 
-        reader.readAsDataURL(file);
+  // Manejo del arrastre de archivos
+  function mover_elemento(e) {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setMensaje("Debe ser una imagen");
+      return;
     }
 
+    setMensaje(`Imagen cargada: ${file.name}\nTamaño: ${file.size} bytes`);
+
+    const reader = new FileReader();
+    reader.onload = cargarImagenArrastre;
+    reader.readAsDataURL(file);
+  }
+
+  function cargarImagenArrastre(ev) {
+    const resultado = ev.target.result;
+    window.history.pushState({ img: resultado }, "", "imagen.html");
+    setContenido(resultado);
+  }
+
+  // Restaurar imagen según historial (atrás/adelante)
+  function change_image(e) {
+    if (e.state && e.state.img) {
+      setContenido(e.state.img);
+    } else {
+      setContenido(default_img);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("popstate", change_image);
+    return () => window.removeEventListener("popstate", change_image);
+  }, []);
 
   return (
     <>
-        <h1> 
-            Sube tu imagen
-        </h1>
+        <h1>Sube tu imagen</h1>
+        <h2 id="msg">{mensaje}</h2>
 
-        <h2 id="msg">{mensaje}
-        </h2>
+        {/* Área de subida */}
 
-        <input type="file" name="archivos" id="archivo" hidden onChange={procesar} />
-        <label for="archivo" class="btn">📂 Subir archivo</label>
-        <h3> Suelta tu imagen en el recuadro o muevela de un lado al otro</h3>
-        
-        <div class ="contenedor">
-            <section id="container" onDragOver={desactivar_drag} onDrop={mover_elemento} onDragEnd={desactivar_drag}>
-                <img src={contenido1} id="imagen" class="imagen"></img>
+        <input
+            type="file"
+            name="archivo"
+            id="archivo"
+            hidden
+            onChange={procesar}
+        />
+        <label htmlFor="archivo" className="btn">
+            📂 Selecciona tu imagen
+        </label>
 
-            </section>
-            <section id="container_2" onDragOver={desactivar_drag} onDrop={mover_elemento} onDragEnd={desactivar_drag}> 
-                <img src={contenido2} id="imagen" className="imagen"></img>
-            </section>
+        <div
+            className="upload-area"
+            onDragOver={desactivar_drag}
+            onDrop={mover_elemento}
+        >
+            <p>O arrastra la imagen aquí</p>
         </div>
-    </>
+
+        {/* Área de visualización */}
+        <div className="preview-area">
+            <img src={contenido} alt="Vista previa" className="imagen" />
+        </div>
+        </>
   );
 }
