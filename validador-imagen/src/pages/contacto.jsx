@@ -1,30 +1,32 @@
-import {useRef} from "react";
+import {useRef,useState} from "react";
 import emailjs from "@emailjs/browser";
 
 export default function App() {
   const form= useRef();
-
-
+  const [btn_class, setBtn_class] = useState("form_boton");
+  const [btm_status, btn_setStatus] = useState("Enviar");
   function enviar_email(e){
     e.preventDefault();
 
     const serviceID = 'default_service';
     const templateID = 'template_vddcqml';
     const publicKey = 'xvh_8LYYeheP-V-j6';
-    form.current.Enviar.value = 'Enviando...';
+    btn_setStatus(' Enviando...');
+    setBtn_class("form_boton enviando");
     emailjs.sendForm(serviceID, templateID, form.current, publicKey)
       .then(() => {
 
-        form.current.Enviar.value = ' Mensaje Enviado';
-        setTimeout(reset_boton, 3000);
-      }, (err) => {
-        form.current.Enviar.value = 'No se pudo enviar';
-        setTimeout(reset_boton, 3000);
+        btn_setStatus('Mensaje Enviado');
+        setBtn_class("form_boton enviado");
 
+      }, (err) => {
+        btn_setStatus(' Error al Enviar');
+        setBtn_class("form_boton error");
         alert(JSON.stringify(err));
 
       });
 
+    setTimeout(reset_boton, 3000);
 
     form.current.reset();
 
@@ -32,7 +34,8 @@ export default function App() {
   }
 
   function reset_boton(){
-    form.current.Enviar.value = 'Enviar';
+    btn_setStatus("Enviar");
+    setBtn_class("form_boton");
   }
 
   return (
@@ -54,7 +57,7 @@ export default function App() {
         <label className="form_titulo">Mensaje </label>
         <textarea className="form_contenido" name="message" rows="6" required></textarea>
 
-        <input className="form_boton" type="submit" name="Enviar" value="Enviar" />
+        <input className={btn_class} type="submit" name="Enviar" value={btm_status} />
 
       </form>
     </div>
