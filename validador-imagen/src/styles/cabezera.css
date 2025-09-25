@@ -12,6 +12,10 @@ body {
 h1{
     font-size: 3vw;
 }
+.subir_imagen{
+    visibility: visible;
+    justify-items: center;
+}
 
 .toolbar{
     position: absolute;
@@ -41,8 +45,4 @@ h1{
     text-decoration: none;
     font-weight: bold;
     font-size: 3vw;
-}
-.subir_imagen{
-    visibility: visible;
-    justify-items: center;
 }
