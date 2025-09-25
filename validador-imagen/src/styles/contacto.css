@@ -35,18 +35,20 @@
     border-radius: 5%;
     height: auto;
     font-size: 1.5vw;
+    text-align: center;
     background-color: burlywood;
 }
 
 .form_boton {
   background-color: #007bff; /* azul por defecto */
   font-size: 1.5vw;
+  text-align: center;
   color: white;
   padding: 0.5% 1%;
   border: none;
   border-radius: 20%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
 .form_boton.enviando {
