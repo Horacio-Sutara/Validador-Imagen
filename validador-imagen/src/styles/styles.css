@@ -52,6 +52,10 @@ body{
 .preview-area .imagen {
     max-width: 100%;
     max-height: 100%;
+    visibility: hidden;
+}
+.preview-area .imagen.visible {
+    visibility: visible;
 }
 
 

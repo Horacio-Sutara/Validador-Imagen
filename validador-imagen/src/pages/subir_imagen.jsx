@@ -1,8 +1,8 @@
-import default_img from "../assets/Geralt.png";
 import { useState } from "react";
 
 export default function App() {
-  const [contenido, setContenido] = useState(default_img);
+  const [contenido, setContenido] = useState(null);
+  const [class_imagen, setClass_imagen] = useState("imagen");
   const [mensaje, setMensaje] = useState("");
 
   // Manejo del archivo seleccionado
@@ -29,6 +29,7 @@ export default function App() {
 
   function setear_imagen(ev){
     setContenido(ev.target.result);
+    setClass_imagen("imagen visible");
   }
 
 
@@ -81,7 +82,7 @@ export default function App() {
       </div>
 
       <div className="preview-area">
-        <img src={contenido} alt="Vista previa" className="imagen" />
+        {contenido && (<contieimg src={contenido} alt="Vista previa" className={class_imagen} />) /* Renderizar solo si hay contenido */}
       </div>
     </div>
   );
