@@ -25,7 +25,7 @@ function Header() {
             ruta="/" 
           />
           <ButtonHeader 
-            icon_name="image" 
+            icon_name="bed" 
             titulo="Servicios" 
             descripcion="Mostrar servicios existentes" 
             ruta="/services" 
