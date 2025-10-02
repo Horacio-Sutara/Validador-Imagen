@@ -1,5 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
-import sprite from '../assets/sprite.svg';
+import { Link } from "react-router-dom";
 import ButtonHeader from "../components/button_header";
 
 function Header() {
@@ -9,7 +8,7 @@ function Header() {
 
 
   return (
-    <header className="min-w-3xs bg-white border-r border-green-700 ">
+    <header className="min-w-3xs bg-[#332e1d] border-r border-green-700 text-white">
       <div className="flex flex-col items-center">
         
         {/* Logo o título */}
@@ -20,7 +19,7 @@ function Header() {
 
         {/* Menú de navegación */}
         <nav className="flex flex-col 
-        min-h-screen min-w-full 
+        min-w-full 
         items-center mt-4 gap-10">
           <ButtonHeader 
             icon_name="upload" 
@@ -28,37 +27,19 @@ function Header() {
             descripcion="Agregue nuevas imagenes" 
             ruta="/validador-imagen/" 
           />
-          <NavLink 
-            to="/Validador-Imagen/services" 
-            className={({ isActive }) => {
-              return `${baseStyles} ${isActive ? activeStyles : inactiveStyles}`;
-            }}
-          >
-            <h1 className="min-w-full flex gap-2 items-center">
-                <svg className="size-5">
-                  <use href={`${sprite}#image`} />
-                </svg>
-
-              Servicios
-            </h1>
-            <p className="font-light text-xs"> Agregue nuevas imagenes</p>
-          </NavLink>
+          <ButtonHeader 
+            icon_name="image" 
+            titulo="Servicios" 
+            descripcion="Mostrar servicios existentes" 
+            ruta="/validador-imagen/services" 
+          />
           
-          <NavLink 
-            to="/Validador-Imagen/contact" 
-            className={({ isActive }) => {
-              return `${baseStyles} ${isActive ? activeStyles : inactiveStyles}`;
-            }}
-          >
-            <h1 className="min-w-full flex gap-2 items-center">
-                <svg className="size-5">
-                  <use href={`${sprite}#phone`} />
-                </svg>
-
-              Contacto
-            </h1>
-            <p className="font-light text-xs"> Agregue nuevas imagenes</p>
-          </NavLink>
+          <ButtonHeader 
+            icon_name="phone" 
+            titulo="Contacto" 
+            descripcion="Descubra como encontrarnos" 
+            ruta="/validador-imagen/contact" 
+          />
         </nav>
       </div>
     </header>

@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 function ButtonHeader({ icon_name, titulo, descripcion, ruta }) {
   const baseStyles = "flex flex-col items-center font-semibold min-w-50 p-2 rounded-lg gap-0.5";
-  const activeStyles = "text-white bg-green-700 hover:bg-green-700/90";
-  const inactiveStyles = "hover:bg-green-700/80 hover:text-white";
+  const activeStyles = "bg-[#5ac7aa] hover:bg-[#5ac7aa]/80";
+  const inactiveStyles = "hover:bg-[#5ac7aa]/50";
 
   return (
     <NavLink 

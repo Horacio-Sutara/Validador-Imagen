@@ -3,9 +3,9 @@ import Header from "./Header";
 
 function Layout() {
   return (
-    <div className="min-h-screen flex bg-slate-500">
+    <div className="min-h-screen flex bg-[#fafcd3]">
       <Header />
-      <main className="bg-white flex-1">
+      <main className="flex-1 ">
         <Outlet /> {/* Aquí se cargan las páginas */}
       </main>
     </div>
