@@ -1,8 +1,7 @@
 import { useState } from "react";
-
+import sprite from '../assets/sprite.svg';
 export default function App() {
   const [contenido, setContenido] = useState(null);
-  const [class_imagen, setClass_imagen] = useState("imagen");
   const [mensaje, setMensaje] = useState("");
 
   // Manejo del archivo seleccionado
@@ -29,7 +28,6 @@ export default function App() {
 
   function setear_imagen(ev){
     setContenido(ev.target.result);
-    setClass_imagen("imagen visible");
   }
 
 
@@ -62,26 +60,31 @@ export default function App() {
       <h1 className="min-w-full flex justify-center items-center p-3 text-5xl font-bold">Sube tu imagen</h1>
       <h2 id="msg" className="min-w-full text-3xl font-bold flex items-center justify-center p-3">{mensaje}</h2>
 
-      <div
-        className="border flex justify-center items-center"
-        onDragOver={desactivar_drag}
-        onDrop={mover_elemento}
-      >
-        <input
-          type="file"
-          name="archivo"
-          id="archivo"
-          hidden
-          onChange={procesar}
-        />
-        <label htmlFor="archivo" className="bg-[#5ac7aa] border rounded-2xl text-white">
-          📂 Selecciona tu imagen
-        </label>
-        <p>O arrastra la imagen aquí</p>
-      </div>
+      <section className="flex justify-center">
+        <div
+          className="flex flex-col justify-center items-center w-xl h-40 border-dashed border-4 border-[#9adcb9] gap-2 p-2 bg-gray-100"
+          onDragOver={desactivar_drag}
+          onDrop={mover_elemento}
+        >
+          <svg className="size-15 rounded-full p-2  bg-[#5ac7aa]/40">
+            <use href={`${sprite}#upload`} />
+          </svg>
+          <input
+            type="file"
+            name="archivo"
+            id="archivo"
+            hidden
+            onChange={procesar}
+          />
+          <label htmlFor="archivo" className="bg-white  rounded-2xl text-black p-2 hover:bg-[#5ac7aa] hover:text-white shadow-2xs">
+            Selecciona tu imagen
+          </label>
+          <p className="font-bold">O arrastra la imagen a esta zona</p>
+        </div>
+      </section>
 
-      <div className="preview-area">
-        {contenido && (<contieimg src={contenido} alt="Vista previa" className={class_imagen} />) /* Renderizar solo si hay contenido */}
+      <div className=" flex justify-center items-center m-10">
+        {contenido && (<img src={contenido} width="30%" className="" alt="Vista previa" />) /* Renderizar solo si hay contenido */}
       </div>
     </>
   );

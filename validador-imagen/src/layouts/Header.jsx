@@ -6,7 +6,7 @@ function Header() {
 
   return (
     <header className="min-w-3xs bg-[#332e1d] border-r border-green-700 text-white">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center m-5">
         
         {/* Logo o título */}
         <Link to="/" className="text-2xl font-bold">
