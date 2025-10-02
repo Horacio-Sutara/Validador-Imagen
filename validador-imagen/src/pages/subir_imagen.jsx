@@ -58,32 +58,31 @@ export default function App() {
   }
 
   return (
-    <div className="subir_imagen">
-      <h1>Sube tu imagen</h1>
-      <h2 id="msg">{mensaje}</h2>
-
-      <input
-        type="file"
-        name="archivo"
-        id="archivo"
-        hidden
-        onChange={procesar}
-      />
-      <label htmlFor="archivo" className="btn">
-        📂 Selecciona tu imagen
-      </label>
+    <>
+      <h1 className="min-w-full flex justify-center items-center p-3 text-5xl font-bold">Sube tu imagen</h1>
+      <h2 id="msg" className="min-w-full text-3xl font-bold flex items-center justify-center p-3">{mensaje}</h2>
 
       <div
-        className="upload-area"
+        className="border flex justify-center items-center"
         onDragOver={desactivar_drag}
         onDrop={mover_elemento}
       >
+        <input
+          type="file"
+          name="archivo"
+          id="archivo"
+          hidden
+          onChange={procesar}
+        />
+        <label htmlFor="archivo" className="bg-[#5ac7aa] border rounded-2xl text-white">
+          📂 Selecciona tu imagen
+        </label>
         <p>O arrastra la imagen aquí</p>
       </div>
 
       <div className="preview-area">
         {contenido && (<contieimg src={contenido} alt="Vista previa" className={class_imagen} />) /* Renderizar solo si hay contenido */}
       </div>
-    </div>
+    </>
   );
 }

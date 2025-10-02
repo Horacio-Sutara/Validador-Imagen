@@ -6,12 +6,12 @@ import Contact from "./pages/contacto";
 export default function App() {
 
   return (
-    <Router>
-      <Routes basename="/Validador-Imagen">
-        <Route path="/Validador-Imagen/" element={<Layout />}>
+    <Router basename="/Validador-Imagen/">
+      <Routes >
+        <Route path='/' element={<Layout />}>
           <Route index element={<Sb_imagen />} />
-          <Route path="/Validador-Imagen/services" element={<Service />} />
-          <Route path="/Validador-Imagen/contact" element={<Contact />} />
+          <Route path='services' element={<Service />} />
+          <Route path='contact' element={<Contact />} />
         </Route>
       </Routes>
     </Router>
