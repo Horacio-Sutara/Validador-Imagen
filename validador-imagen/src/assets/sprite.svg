@@ -87,4 +87,34 @@
   <symbol id="person-2" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 7a3 3 0 110-6 3 3 0 010 6zM4 20v-1c0-2.76 2.24-5 5-5h6c2.76 0 5 2.24 5 5v1H4zM8 12c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v1H8v-1z"/>
   </symbol>
+<!-- Dinero (billete con círculo central y símbolo $ estilizado) -->
+  <symbol id="money" viewBox="0 0 24 24" fill="currentColor">
+    <!-- billete -->
+    <rect x="1" y="6" width="22" height="12" rx="2"/>
+    <!-- borde interior -->
+    <rect x="3.2" y="8" width="17.6" height="8" rx="1"/>
+    <!-- círculo central (moneda/icono) -->
+    <circle cx="12" cy="12" r="2.6" fill="white"/>
+    <!-- símbolo $ (trazos para mantener el estilo) -->
+    <path d="M12 9.5v1.4M12 13.1v1.4M11 9c1-1 2-1 2 0s-1 1-2 2c-1 1-1 2 0 3"
+          stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- API (brackets + servidor/endpoint) -->
+  <symbol id="api" viewBox="0 0 24 24" fill="currentColor">
+    <!-- left bracket (estilizado) -->
+    <path d="M8.2 8.8 L5 12 L8.2 15.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- right bracket -->
+    <path d="M15.8 8.8 L19 12 L15.8 15.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- servidor/API (rectángulo con tres puntos que representan endpoints) -->
+    <rect x="9" y="7.5" width="6" height="9" rx="1.2" />
+    <!-- líneas internas (puerto/endpoint) -->
+    <circle cx="11.5" cy="10.5" r="0.7" fill="white"/>
+    <circle cx="12"   cy="12"   r="0.7" fill="white"/>
+    <circle cx="12.5" cy="13.5" r="0.7" fill="white"/>
+    <!-- pequeña conexión (opcional, estilo de red) -->
+    <path d="M11 15.2 L13 15.2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+  </symbol>
+
+
 </svg>

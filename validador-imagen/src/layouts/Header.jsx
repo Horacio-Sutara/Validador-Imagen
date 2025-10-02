@@ -37,6 +37,12 @@ function Header() {
             descripcion="Descubra como encontrarnos" 
             ruta="/contact" 
           />
+          <ButtonHeader 
+            icon_name="money" 
+            titulo="API Cotización" 
+            descripcion="Conversion de su moneda local" 
+            ruta="/api" 
+          />
         </nav>
       </div>
     </header>
