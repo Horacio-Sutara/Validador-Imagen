@@ -49,8 +49,8 @@ export default function App() {
         </h1>
         <section className="grid grid-cols-2  gap-10 p-10 m-10 place-items-center">
             {habitaciones.map((hab)=>(
-              <div key={hab.id} className="border-emerald-500 border-4 w-md rounded-xl p-4 shadow bg-[#efeba9] hover:bg-amber-300">
-                <img src={hab.img} alt={hab.nombre} className="w-full h-48 object-cover rounded-md" />
+              <div key={hab.id} className="border-emerald-500 border-4 w-md rounded-xl p-4 shadow bg-[#efeba9] ">
+                <img src={hab.img} alt={hab.nombre} className="w-full h-48 object-cover rounded-md" loading="lazy" />
                 <h2 className="text-xl font-bold mt-2">{hab.nombre}</h2>
                 <p>{hab.descripcion}</p>
 
