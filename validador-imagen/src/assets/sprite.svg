@@ -26,6 +26,17 @@
     <path fill="url(#f)" d="M249.756 223.898c3.258-1.9 5.701-5.158 6.787-8.687L130.579.204c-3.258-.543-6.787-.272-9.773 1.628L6.786 67.53l122.979 224.238c1.628-.272 3.529-.815 5.158-1.63l114.833-66.239Z" mask="url(#g)"/>
   </symbol>
   
+  <!-- Verified Icon -->
+  <symbol id="verified" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707a1 1 0 00-1.414-1.414L9 11.172l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+  </symbol>
+
+  <!--Error Icon -->
+  <symbol id="error" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="9" fill="#f87171" /> <!-- fondo rojo -->
+    <line x1="6" y1="6" x2="14" y2="14" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+    <line x1="14" y1="6" x2="6" y2="14" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+  </symbol>
 
   <!-- Upload Icon -->
   <symbol id="upload" viewBox="0 0 24 24" fill="currentColor">

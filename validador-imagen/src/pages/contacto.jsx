@@ -1,6 +1,7 @@
 import {useRef,useState} from "react";
 import emailjs from "@emailjs/browser";
 import sprite from '../assets/sprite.svg';
+import Modal from "../components/Modal";
 
 export default function App() {
   const form= useRef();
@@ -8,6 +9,13 @@ export default function App() {
   const [btn_class, setBtn_class] = useState("bg-[#5ac7aa]");
   const [btm_status, btn_setStatus] = useState("Enviar");
   
+  //Configuracion del modal
+  const [openModal, setopenModal]= useState(false);
+  const [iconModal, seticonModal]=useState("");
+  const [mensajeModal, setmensajeModal]= useState("");
+  const [descripcionModal, setdescripcionModal]= useState("");
+
+
   const baseStyles = `min-w-full col-start-1 col-end-3 border border-[#9adcb9] rounded-xl cursor-pointer text-white py-2 font-bold ${btn_class}`;
 
   function enviar_email(e){
@@ -22,12 +30,23 @@ export default function App() {
       .then(() => {
 
         btn_setStatus('Mensaje Enviado');
+
+        seticonModal("verified")
+        setmensajeModal("¡Mensaje Enviado!")
+        setdescripcionModal("Se ha enviado correctamente el mensaje. Nos pondremos en contacto en breve.")
+        setopenModal(true);
+        
         setBtn_class("bg-blue-400");
+
 
       }, (err) => {
         btn_setStatus(' Error al Enviar');
         setBtn_class("bg-red-600");
-        alert(JSON.stringify(err));
+        
+        seticonModal("error");  
+        setmensajeModal("¡Se ha producido un error!");
+        setdescripcionModal("No se ha podido enviar el mensaje. Lo sentimos");
+        setopenModal(true);
 
       });
 
@@ -45,6 +64,7 @@ export default function App() {
 
   return (
     <>
+      <Modal mensaje={mensajeModal} descripcion={descripcionModal} icon={iconModal} isOpen={openModal} cerrar={()=> {setopenModal(false) }} />
       <h1 className="min-w-full flex justify-center text-5xl font-bold p-3">
           Contacto
       </h1>
